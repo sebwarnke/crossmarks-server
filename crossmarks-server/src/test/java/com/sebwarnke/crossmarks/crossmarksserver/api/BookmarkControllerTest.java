@@ -1,5 +1,6 @@
 package com.sebwarnke.crossmarks.crossmarksserver.api;
 
+import com.sebwarnke.crossmarks.crossmarksserver.model.entities.Bookmark;
 import com.sebwarnke.crossmarks.crossmarksserver.services.BookmarkService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 import static org.mockito.BDDMockito.*;
@@ -36,6 +38,26 @@ public class BookmarkControllerTest {
         .contentType(MediaType.APPLICATION_JSON))
       .andExpect(status().isOk())
       .andExpect(jsonPath("$", hasSize(0)));
+  }
+
+  @Test
+  public void givenTwoBookmarksStored_whenGetBookmarks_thenReturnCollectionOfTwo() throws Exception {
+    Bookmark b1 = Bookmark.builder()
+      .name("b1")
+      .url("www.sebwarnke.com")
+      .build();
+    Bookmark b2 = Bookmark.builder()
+      .name("b2")
+      .url("www.lewarnke.com")
+      .build();
+
+    given(bookmarkService.getAllBookmarks()).willReturn(Arrays.asList(b1, b2));
+
+    mvc.perform(
+      get("/api/bookmark")
+        .contentType(MediaType.APPLICATION_JSON))
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$", hasSize(2)));
   }
 
 }
