@@ -1,11 +1,6 @@
 # MacOS
 **/.DS_Store
 
-# Eclipse
-**/.classpath
-**/.project
-**/.settings
-
 # IntelliJ Idea
 **/*.iml
 **/.idea
