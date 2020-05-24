@@ -1,6 +1,7 @@
 package com.sebwarnke.crossmarks.crossmarksserver.services;
 
 import com.sebwarnke.crossmarks.crossmarksserver.execptions.InvalidUrlException;
+import com.sebwarnke.crossmarks.crossmarksserver.execptions.NoSuchBookmarkException;
 import com.sebwarnke.crossmarks.crossmarksserver.model.entities.Bookmark;
 import com.sebwarnke.crossmarks.crossmarksserver.model.repositories.BookmarksRepository;
 import com.sebwarnke.crossmarks.crossmarksserver.util.Util;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookmarkService {
@@ -39,6 +41,18 @@ public class BookmarkService {
       .build();
 
     return bookmarksRepository.save(bookmark);
+  }
+
+  public void deleteBookmark(String id) {
+    bookmarksRepository.deleteById(id);
+  }
+
+  public Bookmark getBookmark(String id) throws NoSuchBookmarkException {
+    Optional<Bookmark> optional = bookmarksRepository.findById(id);
+    if (optional.isEmpty()) {
+      throw new NoSuchBookmarkException(id);
+    }
+    return optional.get();
   }
 
   /**
