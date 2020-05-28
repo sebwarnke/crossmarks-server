@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Table(
   name = "CM_BOOKMARKS"
