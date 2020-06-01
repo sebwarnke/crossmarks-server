@@ -1,5 +1,6 @@
 package com.sebwarnke.crossmarks.crossmarksserver;
 
+import com.sebwarnke.crossmarks.crossmarksserver.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,10 +14,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-  private final UserDetailsService userDetailsService;
+  private final UserDetailsServiceImpl userDetailsService;
 
   @Autowired
-  public SecurityConfiguration(UserDetailsService userDetailsService) {
+  public SecurityConfiguration(UserDetailsServiceImpl userDetailsService) {
     this.userDetailsService = userDetailsService;
   }
 

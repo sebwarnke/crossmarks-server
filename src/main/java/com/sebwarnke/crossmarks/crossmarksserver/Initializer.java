@@ -24,9 +24,14 @@ public class Initializer implements CommandLineRunner {
   @Override
   public void run(final String... args) throws Exception {
 
-    Bookmark bookmarkTemplate = Bookmark.builder()
+    Bookmark bookmarkTemplate1 = Bookmark.builder()
       .name("sebwarnke.com - my homepage")
       .url("https://sebwarnke.com")
+      .build();
+
+    Bookmark bookmarkTemplate2 = Bookmark.builder()
+      .name("lewarnke.com - wifey's homepage")
+      .url("https://www.lewarnke.com")
       .build();
 
     User user = User.builder()
@@ -35,6 +40,7 @@ public class Initializer implements CommandLineRunner {
       .build();
 
     userService.createUser(user);
-    bookmarkService.createBookmark(bookmarkTemplate);
+    bookmarkService.createBookmark(bookmarkTemplate1);
+    bookmarkService.createBookmark(bookmarkTemplate2);
   }
 }
