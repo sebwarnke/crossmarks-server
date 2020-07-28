@@ -5,6 +5,10 @@
 **/*.iml
 **/.idea
 
+# Yarn
+**/node_modules
+
+
 # Others
 **/target
 **/build*
