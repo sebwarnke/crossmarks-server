@@ -1,8 +1,8 @@
-package com.sebwarnke.crossmarks.crossmarksserver.api;
+package com.sebwarnke.crossmarks.crossmarksserver.core.api;
 
-import com.sebwarnke.crossmarks.crossmarksserver.execptions.InvalidUrlException;
-import com.sebwarnke.crossmarks.crossmarksserver.model.entities.Bookmark;
-import com.sebwarnke.crossmarks.crossmarksserver.services.BookmarkService;
+import com.sebwarnke.crossmarks.crossmarksserver.core.execptions.InvalidUrlException;
+import com.sebwarnke.crossmarks.crossmarksserver.core.model.entities.Bookmark;
+import com.sebwarnke.crossmarks.crossmarksserver.core.services.BookmarkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;

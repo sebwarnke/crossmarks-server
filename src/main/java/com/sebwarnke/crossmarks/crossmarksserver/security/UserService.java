@@ -1,7 +1,5 @@
-package com.sebwarnke.crossmarks.crossmarksserver.services;
+package com.sebwarnke.crossmarks.crossmarksserver.security;
 
-import com.sebwarnke.crossmarks.crossmarksserver.model.entities.User;
-import com.sebwarnke.crossmarks.crossmarksserver.model.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

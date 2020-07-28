@@ -1,4 +1,4 @@
-package com.sebwarnke.crossmarks.crossmarksserver.execptions;
+package com.sebwarnke.crossmarks.crossmarksserver.core.execptions;
 
 public class InvalidUrlException extends Exception {
   public InvalidUrlException(String url) {

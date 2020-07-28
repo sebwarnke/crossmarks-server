@@ -1,10 +1,10 @@
-package com.sebwarnke.crossmarks.crossmarksserver.services;
+package com.sebwarnke.crossmarks.crossmarksserver.core.services;
 
-import com.sebwarnke.crossmarks.crossmarksserver.execptions.InvalidUrlException;
-import com.sebwarnke.crossmarks.crossmarksserver.execptions.NoSuchBookmarkException;
-import com.sebwarnke.crossmarks.crossmarksserver.model.entities.Bookmark;
-import com.sebwarnke.crossmarks.crossmarksserver.model.repositories.BookmarksRepository;
-import com.sebwarnke.crossmarks.crossmarksserver.util.Util;
+import com.sebwarnke.crossmarks.crossmarksserver.core.execptions.InvalidUrlException;
+import com.sebwarnke.crossmarks.crossmarksserver.core.execptions.NoSuchBookmarkException;
+import com.sebwarnke.crossmarks.crossmarksserver.core.model.entities.Bookmark;
+import com.sebwarnke.crossmarks.crossmarksserver.core.model.repositories.BookmarksRepository;
+import com.sebwarnke.crossmarks.crossmarksserver.core.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

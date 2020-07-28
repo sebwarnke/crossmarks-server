@@ -1,4 +1,4 @@
-package com.sebwarnke.crossmarks.crossmarksserver.execptions;
+package com.sebwarnke.crossmarks.crossmarksserver.core.execptions;
 
 public class NoSuchBookmarkException extends Exception {
   public NoSuchBookmarkException(String id) {

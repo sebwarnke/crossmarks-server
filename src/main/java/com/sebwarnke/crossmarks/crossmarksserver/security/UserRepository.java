@@ -1,6 +1,5 @@
-package com.sebwarnke.crossmarks.crossmarksserver.model.repositories;
+package com.sebwarnke.crossmarks.crossmarksserver.security;
 
-import com.sebwarnke.crossmarks.crossmarksserver.model.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

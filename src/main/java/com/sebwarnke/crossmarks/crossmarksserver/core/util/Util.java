@@ -1,4 +1,4 @@
-package com.sebwarnke.crossmarks.crossmarksserver.util;
+package com.sebwarnke.crossmarks.crossmarksserver.core.util;
 
 import java.util.regex.Pattern;
 

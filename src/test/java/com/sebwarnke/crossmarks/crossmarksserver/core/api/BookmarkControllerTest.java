@@ -1,7 +1,7 @@
-package com.sebwarnke.crossmarks.crossmarksserver.api;
+package com.sebwarnke.crossmarks.crossmarksserver.core.api;
 
-import com.sebwarnke.crossmarks.crossmarksserver.model.entities.Bookmark;
-import com.sebwarnke.crossmarks.crossmarksserver.services.BookmarkService;
+import com.sebwarnke.crossmarks.crossmarksserver.core.model.entities.Bookmark;
+import com.sebwarnke.crossmarks.crossmarksserver.core.services.BookmarkService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
