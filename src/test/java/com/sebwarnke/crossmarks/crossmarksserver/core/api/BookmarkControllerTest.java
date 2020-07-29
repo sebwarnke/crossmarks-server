@@ -1,5 +1,7 @@
 package com.sebwarnke.crossmarks.crossmarksserver.core.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sebwarnke.crossmarks.crossmarksserver.core.exceptions.NoSuchBookmarkException;
 import com.sebwarnke.crossmarks.crossmarksserver.core.model.entities.Bookmark;
 import com.sebwarnke.crossmarks.crossmarksserver.core.services.BookmarkService;
 import com.sebwarnke.crossmarks.crossmarksserver.security.UserDetailsServiceImpl;
@@ -64,4 +66,42 @@ public class BookmarkControllerTest {
       .andExpect(jsonPath("$", hasSize(2)));
   }
 
+  @Test
+  public void givenANewBookmark_whenPostBookmark_thenReturnResponseEntityOk() throws Exception {
+    Bookmark b1 = Bookmark.builder()
+      .name("b1")
+      .url("www.sebwarnke.com")
+      .build();
+
+    given(bookmarkService.createBookmark(b1)).willReturn(b1);
+
+    mvc.perform(
+      post("/api/bookmark")
+        .contentType(MediaType.APPLICATION_JSON).content(asJsonString(b1)))
+      .andExpect(status().isOk());
+  }
+
+  @Test
+  public void givenUpdateThrowsException_whenPutBookmark_thenReturnResponseEntityExpectationFailed() throws Exception {
+    String id = "id";
+    Bookmark b1 = Bookmark.builder()
+      .name("b1")
+      .url("www.sebwarnke.com")
+      .build();
+
+    given(bookmarkService.updateBookmark(id, b1)).willThrow(NoSuchBookmarkException.class);
+
+    mvc.perform(
+      put("/api/bookmark/" + id)
+        .contentType(MediaType.APPLICATION_JSON).content(asJsonString(b1)))
+      .andExpect(status().isExpectationFailed());
+  }
+
+  public static String asJsonString(final Object obj) {
+    try {
+      return new ObjectMapper().writeValueAsString(obj);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
 }

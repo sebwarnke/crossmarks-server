@@ -8,6 +8,7 @@ import com.sebwarnke.crossmarks.crossmarksserver.core.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -68,5 +69,23 @@ public class BookmarkService {
    */
   public List<Bookmark> getAllBookmarks() {
     return bookmarksRepository.findAll();
+  }
+
+  public Bookmark updateBookmark(String id, Bookmark bookmarkTemplate) throws NoSuchBookmarkException {
+
+    Optional<Bookmark> optional = bookmarksRepository.findById(id);
+
+    if (optional.isEmpty()) {
+      throw new NoSuchBookmarkException(id);
+    } else {
+      Bookmark bookmark = optional.get();
+      bookmark.setName(bookmarkTemplate.getName());
+      bookmark.setUrl(bookmarkTemplate.getUrl());
+      bookmark.setDescription(bookmarkTemplate.getDescription());
+
+      log.debug("Updating Bookmark:");
+      log.debug(bookmark.toString());
+      return bookmarksRepository.save(bookmark);
+    }
   }
 }
