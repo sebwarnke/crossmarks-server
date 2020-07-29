@@ -1,7 +1,7 @@
 package com.sebwarnke.crossmarks.crossmarksserver.core.services;
 
-import com.sebwarnke.crossmarks.crossmarksserver.core.execptions.InvalidUrlException;
-import com.sebwarnke.crossmarks.crossmarksserver.core.execptions.NoSuchBookmarkException;
+import com.sebwarnke.crossmarks.crossmarksserver.core.exceptions.InvalidUrlException;
+import com.sebwarnke.crossmarks.crossmarksserver.core.exceptions.NoSuchBookmarkException;
 import com.sebwarnke.crossmarks.crossmarksserver.core.model.entities.Bookmark;
 import com.sebwarnke.crossmarks.crossmarksserver.core.model.repositories.BookmarksRepository;
 import com.sebwarnke.crossmarks.crossmarksserver.core.util.Util;
