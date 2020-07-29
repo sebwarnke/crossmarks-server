@@ -2,6 +2,7 @@ package com.sebwarnke.crossmarks.crossmarksserver.core.api;
 
 import com.sebwarnke.crossmarks.crossmarksserver.core.model.entities.Bookmark;
 import com.sebwarnke.crossmarks.crossmarksserver.core.services.BookmarkService;
+import com.sebwarnke.crossmarks.crossmarksserver.security.UserDetailsServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class BookmarkControllerTest {
 
   @Autowired
   private MockMvc mvc;
+
+  @MockBean
+  private UserDetailsServiceImpl userDetailsService;
 
   @MockBean
   private BookmarkService bookmarkService;
