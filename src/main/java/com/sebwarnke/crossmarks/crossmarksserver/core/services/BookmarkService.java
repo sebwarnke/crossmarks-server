@@ -5,6 +5,8 @@ import com.sebwarnke.crossmarks.crossmarksserver.core.exceptions.NoSuchBookmarkE
 import com.sebwarnke.crossmarks.crossmarksserver.core.model.entities.Bookmark;
 import com.sebwarnke.crossmarks.crossmarksserver.core.model.repositories.BookmarksRepository;
 import com.sebwarnke.crossmarks.crossmarksserver.core.util.Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ import java.util.Optional;
 
 @Service
 public class BookmarkService {
+  private static final Logger log = LoggerFactory.getLogger(BookmarkService.class);
 
   private BookmarksRepository bookmarksRepository;
 
@@ -40,10 +43,14 @@ public class BookmarkService {
       .createdAt(LocalDateTime.now())
       .build();
 
+    log.debug("Saving Bookmark:");
+    log.debug(bookmark.toString());
+
     return bookmarksRepository.save(bookmark);
   }
 
   public void deleteBookmark(String id) {
+    log.debug("Deleting Bookmark with ID [{}]", id);
     bookmarksRepository.deleteById(id);
   }
 
