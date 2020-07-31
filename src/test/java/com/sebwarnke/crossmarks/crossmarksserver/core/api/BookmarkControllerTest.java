@@ -82,17 +82,17 @@ public class BookmarkControllerTest {
   }
 
   @Test
-  public void givenUpdateThrowsException_whenPutBookmark_thenReturnResponseEntityExpectationFailed() throws Exception {
-    String id = "id";
+  public void givenUpdateBookmarkThrowsException_whenPutBookmark_thenReturnResponseEntityExpectationFailed() throws Exception {
     Bookmark b1 = Bookmark.builder()
+      .id("b1_id")
       .name("b1")
       .url("www.sebwarnke.com")
       .build();
 
-    given(bookmarkService.updateBookmark(id, b1)).willThrow(NoSuchBookmarkException.class);
+    given(bookmarkService.updateBookmark(b1)).willThrow(NoSuchBookmarkException.class);
 
     mvc.perform(
-      put("/api/bookmark/" + id)
+      put("/api/bookmark")
         .contentType(MediaType.APPLICATION_JSON).content(asJsonString(b1)))
       .andExpect(status().isExpectationFailed());
   }

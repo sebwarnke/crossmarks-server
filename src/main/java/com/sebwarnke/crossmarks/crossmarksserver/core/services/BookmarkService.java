@@ -71,12 +71,12 @@ public class BookmarkService {
     return bookmarksRepository.findAll();
   }
 
-  public Bookmark updateBookmark(String id, Bookmark bookmarkTemplate) throws NoSuchBookmarkException {
+  public Bookmark updateBookmark(Bookmark bookmarkTemplate) throws NoSuchBookmarkException {
 
-    Optional<Bookmark> optional = bookmarksRepository.findById(id);
+    Optional<Bookmark> optional = bookmarksRepository.findById(bookmarkTemplate.getId());
 
     if (optional.isEmpty()) {
-      throw new NoSuchBookmarkException(id);
+      throw new NoSuchBookmarkException(bookmarkTemplate.getId());
     } else {
       Bookmark bookmark = optional.get();
       bookmark.setName(bookmarkTemplate.getName());
