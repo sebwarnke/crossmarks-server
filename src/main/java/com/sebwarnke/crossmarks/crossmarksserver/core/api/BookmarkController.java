@@ -70,12 +70,12 @@ public class BookmarkController {
     }
   }
 
-  @PutMapping("/bookmark/{id}")
-  public ResponseEntity<?> updateBookmark(@PathVariable String id, @RequestBody Bookmark bookmarkTemplate) {
-    log.debug("Endpoint called: PUT /bookmark/{}", id);
+  @PutMapping("/bookmark")
+  public ResponseEntity<?> updateBookmark(@RequestBody Bookmark bookmarkTemplate) {
+    log.debug("Endpoint called: PUT /bookmark/{}", bookmarkTemplate.getId());
     try {
       log.debug("-- Entity updated");
-      return ResponseEntity.ok().body(bookmarkService.updateBookmark(id, bookmarkTemplate));
+      return ResponseEntity.ok().body(bookmarkService.updateBookmark(bookmarkTemplate));
 
     } catch (NoSuchBookmarkException e) {
       log.debug("-- Entity not updated");
