@@ -3,6 +3,7 @@ package com.sebwarnke.crossmarks.crossmarksserver.core.api;
 import com.sebwarnke.crossmarks.crossmarksserver.core.exceptions.InvalidUrlException;
 import com.sebwarnke.crossmarks.crossmarksserver.core.exceptions.NoSuchBookmarkException;
 import com.sebwarnke.crossmarks.crossmarksserver.core.model.entities.Bookmark;
+import com.sebwarnke.crossmarks.crossmarksserver.core.model.entities.MessageResponse;
 import com.sebwarnke.crossmarks.crossmarksserver.core.services.BookmarkService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +48,7 @@ public class BookmarkController {
 
     } catch (NoSuchBookmarkException e) {
       log.debug("-- Entity not found");
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"message\" : \"" + e.getMessage() + "\"}");
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MessageResponse(e.getMessage()));
     }
   }
 
@@ -66,7 +67,7 @@ public class BookmarkController {
 
     } catch (InvalidUrlException e) {
       log.debug("Entity not created; {}", e.getMessage());
-      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("{\"message\" : \"" + e.getMessage() + "\"}");
+      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new MessageResponse(e.getMessage()));
     }
   }
 
@@ -79,7 +80,7 @@ public class BookmarkController {
 
     } catch (NoSuchBookmarkException e) {
       log.debug("-- Entity not updated");
-      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("{\"message\" : \"" + e.getMessage() + "\"}");
+      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new MessageResponse(e.getMessage()));
     }
 
   }

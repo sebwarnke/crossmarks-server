@@ -1,9 +1,9 @@
 package com.sebwarnke.crossmarks.crossmarksserver;
 
 import com.sebwarnke.crossmarks.crossmarksserver.core.model.entities.Bookmark;
-import com.sebwarnke.crossmarks.crossmarksserver.security.User;
 import com.sebwarnke.crossmarks.crossmarksserver.core.services.BookmarkService;
-import com.sebwarnke.crossmarks.crossmarksserver.security.UserService;
+import com.sebwarnke.crossmarks.crossmarksserver.security.models.User;
+import com.sebwarnke.crossmarks.crossmarksserver.security.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

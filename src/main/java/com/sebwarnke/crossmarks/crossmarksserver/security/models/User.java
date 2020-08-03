@@ -1,4 +1,4 @@
-package com.sebwarnke.crossmarks.crossmarksserver.security;
+package com.sebwarnke.crossmarks.crossmarksserver.security.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

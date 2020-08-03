@@ -1,5 +1,7 @@
-package com.sebwarnke.crossmarks.crossmarksserver.security;
+package com.sebwarnke.crossmarks.crossmarksserver.security.services;
 
+import com.sebwarnke.crossmarks.crossmarksserver.security.models.User;
+import com.sebwarnke.crossmarks.crossmarksserver.security.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

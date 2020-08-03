@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sebwarnke.crossmarks.crossmarksserver.core.exceptions.NoSuchBookmarkException;
 import com.sebwarnke.crossmarks.crossmarksserver.core.model.entities.Bookmark;
 import com.sebwarnke.crossmarks.crossmarksserver.core.services.BookmarkService;
-import com.sebwarnke.crossmarks.crossmarksserver.security.UserDetailsServiceImpl;
+import com.sebwarnke.crossmarks.crossmarksserver.security.services.UserDetailsServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
