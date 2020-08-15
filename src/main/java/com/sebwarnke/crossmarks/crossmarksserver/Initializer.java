@@ -26,6 +26,7 @@ public class Initializer implements CommandLineRunner {
     Bookmark bookmarkTemplate1 = Bookmark.builder()
       .name("sebwarnke.com - my homepage")
       .url("https://sebwarnke.com")
+      .description("This is the entrypoint to everything I do.")
       .build();
 
     Bookmark bookmarkTemplate2 = Bookmark.builder()
