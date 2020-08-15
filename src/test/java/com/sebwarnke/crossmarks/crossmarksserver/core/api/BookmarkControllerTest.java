@@ -5,22 +5,27 @@ import com.sebwarnke.crossmarks.crossmarksserver.core.exceptions.NoSuchBookmarkE
 import com.sebwarnke.crossmarks.crossmarksserver.core.model.entities.Bookmark;
 import com.sebwarnke.crossmarks.crossmarksserver.core.services.BookmarkService;
 import com.sebwarnke.crossmarks.crossmarksserver.security.services.UserDetailsServiceImpl;
+import com.sebwarnke.crossmarks.crossmarksserver.security.util.JwtUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.mockito.BDDMockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BookmarkController.class)
@@ -33,8 +38,12 @@ public class BookmarkControllerTest {
   private UserDetailsServiceImpl userDetailsService;
 
   @MockBean
+  private JwtUtil jwtUtil;
+
+  @MockBean
   private BookmarkService bookmarkService;
 
+  @WithMockUser
   @Test
   public void givenNoBookmarksStored_whenGetBookmarks_thenReturnEmptyCollection() throws Exception {
     given(bookmarkService.getAllBookmarks()).willReturn(Collections.emptyList());
@@ -46,6 +55,7 @@ public class BookmarkControllerTest {
       .andExpect(jsonPath("$", hasSize(0)));
   }
 
+  @WithMockUser
   @Test
   public void givenTwoBookmarksStored_whenGetBookmarks_thenReturnCollectionOfTwo() throws Exception {
     Bookmark b1 = Bookmark.builder()
@@ -66,6 +76,7 @@ public class BookmarkControllerTest {
       .andExpect(jsonPath("$", hasSize(2)));
   }
 
+  @WithMockUser
   @Test
   public void givenANewBookmark_whenPostBookmark_thenReturnResponseEntityOk() throws Exception {
     Bookmark b1 = Bookmark.builder()
@@ -81,6 +92,7 @@ public class BookmarkControllerTest {
       .andExpect(status().isOk());
   }
 
+  @WithMockUser
   @Test
   public void givenUpdateBookmarkThrowsException_whenPutBookmark_thenReturnResponseEntityExpectationFailed() throws Exception {
     Bookmark b1 = Bookmark.builder()
